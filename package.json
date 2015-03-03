@@ -50,7 +50,8 @@
   "jspm": {
     "dependencies": {
       "react": "npm:react@^0.12.2",
-      "react-router": "npm:react-router@^0.12.4"
+      "react-router": "npm:react-router@^0.12.4",
+      "reflux": "npm:reflux@^0.2.5"
     }
   },
   "dependencies": {
