@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 
 var About = React.createClass({ 
   render() {
@@ -11,4 +11,4 @@ var About = React.createClass({
   } 
 });
 
-module.exports = About;
+export default About;

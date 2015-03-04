@@ -33,7 +33,7 @@ gulp.task('build-html', function () {
 gulp.task('build-styles', function () {
   return gulp.src(paths.style)
     .pipe(less())
-    .pipe(gulp.dest(paths.output));
+    .pipe(gulp.dest(paths.outputStyles));
 });
 
 

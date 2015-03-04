@@ -18,8 +18,9 @@ var Header = React.createClass({
 			    </div>
 			     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul className="nav navbar-nav">
-			       	<li><a href="#/">Dashboard</a></li>
-		     		<li><a href="#/paymant">Payment</a></li>
+			       	<li><a href="#/">Home</a></li>
+		     		<li><a href="#/about">About</a></li>
+		     		<li><a href="#/browse">Browse</a></li>
 			      </ul>			     
 			    </div>
 			  </nav>
