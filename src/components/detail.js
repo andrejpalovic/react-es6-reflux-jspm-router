@@ -3,14 +3,18 @@ import Store from 'dist/stores/userStore';
 import Action from 'dist/actions/actions';
 import Router from 'react-router';
 var Detail = React.createClass({
-	mixins: [ Router.State ],
+	mixins: [ Router.Navigation, Router.State ],
 	handleSubmit(e){
+		var that=this;
 		e.preventDefault();
 		var user={
 			email:this.refs.email.getDOMNode().value,
 			name:this.refs.name.getDOMNode().value,
 			userName:this.refs.userName.getDOMNode().value
-		};		
+		};
+		Action.userUpdate.triggerPromise(user).then(function(){
+			that.transitionTo('/browse');
+		});		
 	},
 	completed(data){
   			this.refs.email.getDOMNode().value=data.email;
@@ -18,13 +22,9 @@ var Detail = React.createClass({
 			this.refs.userName.getDOMNode().value=data.userName;
   	},
 	componentDidMount() {
-        this.userDetailSubscription = Action.userDetail.completed.listen(this.completed);
-        var userName = this.getParams().userName
-        Action.userDetail(userName);
-    },
-    componentWillUnmount() {
-        this.userDetailSubscription();
-    },
+        var userName = this.getParams().userName;
+        Action.userDetail.triggerPromise(userName).then(this.completed);
+    },   
 	render(){		
 		return (
 			<form onSubmit={this.handleSubmit}>
