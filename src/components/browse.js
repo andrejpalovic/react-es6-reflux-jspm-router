@@ -4,21 +4,24 @@ import Action from 'dist/actions/actions';
 
 var Browse = React.createClass({
     getInitialState() {
-    	return {data: [],loaded:false};
+    	return {data: [], loaded:false};
   	},
   	completed(data){
   		this.setState( {data: data,loaded:true});
   	},
   	componentDidMount() {
-        Action.usersLoad.completed.listen(this.completed);
-        Action.usersLoad.trigger();
-
+        this.userLoadSubscription = Action.usersLoadCompleted.listen(this.completed);
+        Action.usersLoad();
+    },
+    componentWillUnmount() {
+        this.userLoadSubscription();
     },   
 	render(){
 		var rows=this.state.data.map(function(user){
 			var url='#/detail/'+user.userName
 			return <tr><td><a href={url}>{user.name}</a></td><td>{user.email}</td></tr>;
 		});
+		
 		return(			
 				<table className="table">
 				<thead>
