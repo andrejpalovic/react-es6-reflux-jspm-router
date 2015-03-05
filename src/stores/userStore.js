@@ -5,7 +5,11 @@ var UserStore=Reflux.createStore({
 	listenables: Actions,    
     onUsersLoadCompleted(data){
         this.trigger(data);
+    },
+     onUserDetailCompleted(data){
+        this.trigger(data);
     }
+
 
 });
 

@@ -10,7 +10,7 @@ var Browse = React.createClass({
   		this.setState( {data: data,loaded:true});
   	},
   	componentDidMount() {
-        this.userLoadSubscription = Action.usersLoadCompleted.listen(this.completed);
+        this.userLoadSubscription = Action.usersLoad.completed.listen(this.completed);
         Action.usersLoad();
     },
     componentWillUnmount() {

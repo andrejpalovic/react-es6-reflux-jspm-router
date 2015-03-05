@@ -12,7 +12,7 @@ var BusyIndicator = React.createClass({
       this.setState({enabled:false});
     },
     componentDidMount() {
-        this.requestCompletedSubscription = Action.requestCompleted.listen(this.requestCompleted);
+        this.requestCompletedSubscription = Action.request.completed.listen(this.requestCompleted);
         this.requestSubscription = Action.request.listen(this.request);
     },
     componentWillUnmount() {
