@@ -4,6 +4,11 @@ import Action from 'dist/actions/actions';
 import Router from 'react-router';
 var Detail = React.createClass({
 	mixins: [ Router.Navigation, Router.State ],
+	  statics: {
+	    fetchData (params) {
+	      return Action.userDetail.triggerPromise(params.userName).then((res) => res);
+	    }
+  	},
 	handleSubmit(e){
 		var that=this;
 		e.preventDefault();
@@ -16,15 +21,15 @@ var Detail = React.createClass({
 			that.transitionTo('/browse');
 		});		
 	},
-	completed(data){
-  			this.refs.email.getDOMNode().value=data.email;
-			this.refs.name.getDOMNode().value=data.name;
-			this.refs.userName.getDOMNode().value=data.userName;
+	getInitialState() {
+    	var data=this.props.data.Detail;
+    	return {data: data};
   	},
-	componentDidMount() {
-        var userName = this.getParams().userName;
-        Action.userDetail.triggerPromise(userName).then(this.completed);
-    },   
+	componentDidMount (){
+  			this.refs.email.getDOMNode().value=this.state.data.email;
+			this.refs.name.getDOMNode().value=this.state.data.name;
+			this.refs.userName.getDOMNode().value=this.state.data.userName;
+  	},	
 	render(){		
 		return (
 			<form onSubmit={this.handleSubmit}>

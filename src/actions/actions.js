@@ -1,5 +1,6 @@
 import Reflux from 'reflux';
 
+
 var Actions = Reflux.createActions({
 	"request":{asyncResult: true},
 	"usersLoad":{asyncResult: true},

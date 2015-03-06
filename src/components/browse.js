@@ -3,19 +3,14 @@ import Store from 'dist/stores/userStore';
 import Action from 'dist/actions/actions';
 
 var Browse = React.createClass({
+    statics: {
+	    fetchData (params) {
+	      return Action.usersLoad.triggerPromise().then((res) => res);
+	    }
+  	},
     getInitialState() {
-    	return {data: [], loaded:false};
-  	},
-  	completed(data){
-  		this.setState( {data: data,loaded:true});
-  	},
-  	componentDidMount() {
-        this.userLoadSubscription = Action.usersLoad.completed.listen(this.completed);
-        Action.usersLoad();
-    },
-    componentWillUnmount() {
-        this.userLoadSubscription();
-    },   
+    	return {data: this.props.data.Browse};
+  	},  	
 	render(){
 		var rows=this.state.data.map(function(user){
 			var url='#/detail/'+user.userName

@@ -12,7 +12,7 @@ var Shell = React.createClass({
           <Header/>
           <BusyIndicator/>
           <div className="container-fluid">
-            <RouteHandler/>
+            <RouteHandler data={this.props.data}/>
           </div>
          </div>
       );
