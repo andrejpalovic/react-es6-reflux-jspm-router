@@ -1,5 +1,4 @@
 import React from 'react';
-import Store from 'dist/stores/userStore';
 import Action from 'dist/actions/actions';
 
 var Browse = React.createClass({

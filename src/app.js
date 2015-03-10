@@ -6,6 +6,7 @@ import Browse from './components/browse';
 import About from './components/about';
 import Detail from './components/detail';
 import Router from 'react-router';
+import * as storeLoader from './stores/storeLoader'
 
 import Action from 'dist/actions/actions';
 var Route  = Router.Route;
