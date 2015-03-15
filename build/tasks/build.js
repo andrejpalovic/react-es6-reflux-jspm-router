@@ -48,3 +48,19 @@ gulp.task('build', function(callback) {
     callback
   );
 });
+
+gulp.task('build-release',function(){
+  var path = require("path");
+  var Builder = require('systemjs-builder');
+  var builder = new Builder();
+  builder.loadConfig('./config.js').then(function(){
+     return builder.buildSFX('dist/app', 'outfile.js', { minify: true, sourceMaps: true}).then(function() {
+      console.log('Build complete');
+    })
+    .catch(function(err) {
+      console.log('Build error');
+      console.log(err);
+    });
+  });
+ 
+});
